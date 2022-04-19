@@ -1,0 +1,38 @@
+<app-header titulo = "Lista de Cobranza hoy"></app-header>
+
+
+<ion-searchbar animated placeholder="Buscar" (ionChange)="buscar($event)"></ion-searchbar>
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+   
+     <ion-list>
+      <ion-reorder-group [disabled]="false"
+      (ionItemReorder)="reorder($event)">
+      <ion-item-sliding *ngFor=" let lista of listaPedidos | filtroArray:textoBuscar:'nombre'" >
+        <ion-item (click)="detalle(lista.detalles,lista.cliente.nombre,lista.n_cuota)">
+          <ion-grid>
+            <ion-row>
+              <ion-col >
+                <ion-label>{{lista.cliente.nombre}}</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label class="label">{{lista.cliente.ciudad}}</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid> 
+          <ion-reorder slot="end"></ion-reorder>       
+        </ion-item>
+      </ion-item-sliding>
+    </ion-reorder-group>
+      </ion-list>
+
+
+      <ion-fab   horizontal="start" vertical="bottom" slot="fixed">
+        <ion-fab-button color="success" (click)="imprimirCobros()">
+          <ion-icon  name="print-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      
+</ion-content>

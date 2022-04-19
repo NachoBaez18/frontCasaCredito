@@ -1,0 +1,36 @@
+
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="reader-sharp" slot="start"></ion-icon>
+        <ion-label (click)="irPedidos(true)">Todos los pedidos</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="receipt-sharp" slot="start"></ion-icon>
+       <ion-label (click)="irEntregaPedidos(false)"> Pedidos por entregar hoy</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="cash-sharp" slot="start"></ion-icon>
+        <ion-label (click)="irCobrosHoy(true)">Clientes por cobrar hoy</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="cash-sharp" slot="start"></ion-icon>
+        <ion-label (click)="irCobros(false)">Clientes por cobrar</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person-sharp" slot="start"></ion-icon>
+        <ion-label (click)="irClientes()">Clientes</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="wallet-sharp" slot="start"></ion-icon>
+        <ion-label (click)="irArqueo()">Arqueos</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>

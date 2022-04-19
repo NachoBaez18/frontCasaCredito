@@ -1,0 +1,36 @@
+<app-header-modal titulo = "Registro Cliente"></app-header-modal>
+<ion-content padding>
+  
+  <h3 *ngIf="accion && !detalle" class="ancho">Registrar</h3>
+  <h3 *ngIf="!accion && !detalle" class="ancho">Actualizar</h3>
+  <h3 *ngIf="accion && detalle" class="ancho">Detalle</h3>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+        <ion-item class="ancho">
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input [readonly] ="inputDisabled" autocomplete="off" formControlName="nombre"></ion-input>   
+          </ion-item>
+
+          <ion-item class="ancho">
+            <ion-label position="floating">Nº Cedula</ion-label>
+            <ion-input [readonly] ="inputDisabled" autocomplete="off" formControlName="cedula"></ion-input>   
+          </ion-item>
+
+          <ion-item class="ancho">
+            <ion-label position="floating">Telefono</ion-label>
+            <ion-input [readonly] ="inputDisabled" type="number" autocomplete="off" formControlName="telefono"></ion-input>
+          </ion-item>
+
+          <ion-item class="ancho">
+            <ion-label position="floating">Ciudad</ion-label>
+            <ion-input [readonly] ="inputDisabled" autocomplete="off" formControlName="ciudad"></ion-input>
+          </ion-item>
+          
+          <br>
+          <ion-button *ngIf="accion && !detalle" type="submit" class="ancho"  expand="block" color="secondary" [disabled]="form.invalid">Registrar</ion-button>
+           <br>
+          <ion-button *ngIf="!accion && !detalle" (click)="editar()" class="ancho"  expand="block" color="tertiary" [disabled]="form.invalid">Actualizar</ion-button>
+
+      </form>
+
+</ion-content>

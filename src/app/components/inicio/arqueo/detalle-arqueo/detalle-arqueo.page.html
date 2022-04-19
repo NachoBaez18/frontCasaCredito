@@ -1,0 +1,41 @@
+<app-header-modal titulo = "Registro Caja"></app-header-modal>
+<ion-content padding>
+  
+  <h3 *ngIf="accion && !detalle" class="ancho">Registrar</h3>
+  <h3 *ngIf="!accion && !detalle" class="ancho">Actualizar</h3>
+  <h3 *ngIf="accion && detalle" class="ancho">Detalle</h3>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+        <ion-item class="ancho">
+            <ion-label position="floating">Caja inicial</ion-label>
+            <ion-input [readonly] ="inputDisabled" type="number" autocomplete="off" formControlName="caja"></ion-input>   
+          </ion-item>
+
+          <ion-item class="ancho">
+            <ion-label position="floating">Dinero entregado</ion-label>
+            <ion-input readonly ="true" type="number" autocomplete="off" formControlName="entregado"></ion-input>   
+          </ion-item>
+
+          <ion-item class="ancho">
+            <ion-label position="floating">Dinero recibido</ion-label>
+            <ion-input readonly ="true" type="number" autocomplete="off" formControlName="cobrado"></ion-input>
+          </ion-item>
+
+          <ion-item class="ancho">
+            <ion-label position="floating">Caja final</ion-label>
+            <ion-input readonly ="true" type="number" autocomplete="off" formControlName="arqueoDia"></ion-input>
+          </ion-item>
+          
+          <br>
+          <ion-button  *ngIf="accion && !detalle && boton" type="submit" class="ancho"  expand="block" color="secondary" [disabled]="form.invalid">Abrir Caja</ion-button>
+           <br>
+          <ion-button *ngIf="!accion && !detalle && boton" (click)="editar()" class="ancho"  expand="block" color="tertiary" [disabled]="form.invalid">Editar Caja</ion-button>
+          <br>
+          <ion-button *ngIf="accion && detalle && boton" (click)="cerrarCaja()" class="ancho"  expand="block" color="success" [disabled]="form.invalid">Cerrar Caja</ion-button>
+
+
+
+
+      </form>
+
+</ion-content>

@@ -1,0 +1,63 @@
+<app-header *ngIf="header" titulo = "Pedidos"></app-header>
+<app-header *ngIf="!header" titulo = "Pedidos a entregar"></app-header>
+
+<ion-searchbar animated placeholder="Buscar" (ionChange)="buscar($event)"></ion-searchbar>
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+   
+     <ion-list>
+       <ion-reorder-group [disabled]="false"
+                          (ionItemReorder)="reorder($event)">
+      <ion-item-sliding *ngFor=" let lista of listaPedidos | filtroArray:textoBuscar:'nombre'">
+        <ion-item (click)="detalle(true,lista,true)">
+          <ion-grid>
+            <ion-row>
+              <ion-col >
+                <ion-label>{{lista.cliente.nombre}}</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label  class="label">{{lista.monto | number}}</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>    
+          <ion-reorder slot="end"></ion-reorder>   
+        </ion-item>
+       
+        <ion-item-options side="start" >
+          <ion-item-option color="secondary" (click)="editar(false,lista,false)">
+            <ion-icon slot="icon-only"  name="create-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item-options side="end" >
+          <ion-item-option *ngIf="header" color="success" (click)="imprimir(lista.id)">
+            <ion-icon slot="icon-only" name="print-outline"></ion-icon>
+          </ion-item-option>
+           <ion-item-option *ngIf="!header" color="success" (click)="entregar(lista)">
+            <ion-icon slot="icon-only" name="cash-outline"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="danger" (click)="borrar(lista)">
+            <ion-icon  slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-reorder-group>
+      </ion-list>
+
+      <ion-fab  horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button (click)="AbrirRegistro(true,null,false,false)">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <ion-fab *ngIf="!header"  horizontal="start" vertical="bottom" slot="fixed">
+        <ion-fab-button color="success" (click)="imprimirPedidos()">
+          <ion-icon  name="print-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+
+      
+</ion-content>
+

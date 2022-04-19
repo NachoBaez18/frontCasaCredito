@@ -1,0 +1,21 @@
+
+<div class="body">
+    <div class="login">
+      <form [formGroup]="form" (ngSubmit)="ingresar()">
+        <ion-img class="img" src="../../../assets/img/user.png"></ion-img>
+           <h1>Acceso</h1>
+         <ion-item class="ancho">
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input  autocomplete="off" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item class="ancho">
+            <ion-label position="stacked">Clave Acceso</ion-label>
+            <ion-input type="password"  autocomplete="off" formControlName="password"></ion-input>
+          </ion-item>
+          <br>
+          <ion-button type="submit" class="ancho"  expand="block" color="secondary" [disabled]="form.invalid">Ingresar</ion-button>
+
+      </form>
+       
+    </div>      
+</div>

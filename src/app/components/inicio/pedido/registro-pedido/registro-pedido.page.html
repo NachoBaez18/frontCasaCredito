@@ -1,0 +1,48 @@
+<app-header-modal titulo = "Registro Pedido"></app-header-modal>
+<ion-content padding>
+  
+    <h3 *ngIf="accion && !detalle" class="ancho">Registrar</h3>
+    <h3 *ngIf="!accion && !detalle" class="ancho">Actualizar</h3>
+    <h3 *ngIf="accion && detalle" class="ancho">Detalle</h3>
+  
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+
+        <ion-item class="ancho">
+          <ion-item>
+            <ion-label >
+              <ion-button (click)="irCliente()" *ngIf="botonHabilitado"  slot="icon-only">
+                <ion-icon  name="person-outline"></ion-icon>
+              </ion-button>
+            </ion-label>{{nombre}}
+          </ion-item>
+        </ion-item>
+         
+            <ion-item class="ancho">
+              <ion-label position="floating">Fecha de Entrga</ion-label>
+              <ion-datetime [readonly] ="inputDisabled" required
+              displayFormat="YYYY MM DD" placeholder="Seleccione la fecha"
+              [(ngModel)]="fecha" [ngModelOptions]="{standalone: true}" cancelText="Cancelar" doneText="Aceptar"></ion-datetime>   
+            </ion-item>
+  
+            <ion-item class="ancho">
+              <ion-label position="floating">Monto</ion-label>
+              <ion-input  [readonly] ="inputDisabled"  type="number" autocomplete="off" 
+              formControlName="monto" [value]="monto | currency"
+               ></ion-input>
+            </ion-item>
+  
+            <ion-item class="ancho">
+              <ion-label position="floating">Cantidad cuotas</ion-label>
+              <ion-input [readonly] ="inputDisabled" type="number" autocomplete="off" 
+              formControlName="cuota"></ion-input>
+            </ion-item>
+            
+            <br>
+            <ion-button *ngIf="accion && !detalle" type="submit" class="ancho"  expand="block" color="secondary" [disabled]="form.invalid"  >Registrar</ion-button>
+             <br>
+            <ion-button *ngIf="!accion && !detalle" (click)="editar()" class="ancho"  expand="block" color="tertiary" [disabled]="form.invalid" >Actualizar</ion-button>
+  
+        </form>
+  
+  </ion-content>
+  
