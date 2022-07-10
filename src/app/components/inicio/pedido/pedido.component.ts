@@ -61,18 +61,20 @@ export class PedidoComponent implements OnInit {
       const response: any = await this.pedidoService.get(null, this.parametro);
       if (response.success) {
         this.listaPedidos = response.data;
+        
       }
 
     } else {
       this.parametro = {
         cancelado: 'N',
         entregado: 'N',
-       // fecha_entrega:this.fechaActual.format('YYYY-MM-DD')
+       fecha_entrega:this.fechaActual.format('YYYY-MM-DD')
       }
       this.parametro;
       const response: any = await this.pedidoService.get(null, this.parametro);
       if (response.success) {
         this.listaPedidos = response.data;
+       
       }
     }
 
@@ -103,6 +105,7 @@ export class PedidoComponent implements OnInit {
     this.cargando(true);
 
     const response: any = await this.pedidoService.entregar(pedido.id);
+
     if (response.success) {
       this.cargando(false);
       setTimeout(() => {

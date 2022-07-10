@@ -12,7 +12,7 @@ export class ArqueoService {
   constructor(private http:HttpClient) { }
 
   public async get(id?, parametros?) {
-    const url = (id) ? `${API}/arqueo/arqueos/${id}` : `${API}/arqueo/arqueos/`;
+    const url = (id) ? `${API}/arqueo/arqueos/${id}` : `${API}/arqueo/arqueos`;
 
     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     const params = new HttpParams({ fromObject: parametros });
@@ -33,7 +33,7 @@ export class ArqueoService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return new Promise(resolve => {
-      this.http.post(`${API}/arqueo/arqueos/`, data, { headers: headers }).subscribe(
+      this.http.post(`${API}/arqueo/arqueos`, data, { headers: headers }).subscribe(
         (response: any) => {
           resolve(response);
         },
@@ -61,7 +61,7 @@ export class ArqueoService {
   public async getUltimo() {
 
     return new Promise(resolve => {
-      this.http.get(`${API}/arqueo/ultimo/`).subscribe(
+      this.http.get(`${API}/arqueo/ultimo`).subscribe(
         (response: any) => {
           resolve(response);
         },

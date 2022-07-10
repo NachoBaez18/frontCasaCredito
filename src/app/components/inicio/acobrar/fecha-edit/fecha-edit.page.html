@@ -1,0 +1,10 @@
+<app-header-modal titulo = "Edicion de Fecha"></app-header-modal>
+<ion-content padding>
+  <h3  class="ancho">Edicion fecha de {{nombre}}</h3>
+
+  <ion-range  [(ngModel)]=" dato" [min]="-5" [max]="5" [value]="0" [pin]="true" [ticks]="true" [snaps]="true"></ion-range>
+
+          <br>
+          <ion-button  (click)="editar()" class="ancho"  expand="block" color="secondary">Registrar</ion-button>
+
+</ion-content>

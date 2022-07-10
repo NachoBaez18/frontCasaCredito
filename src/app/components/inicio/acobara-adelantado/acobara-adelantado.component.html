@@ -10,14 +10,16 @@
      <ion-list>
       
       <ion-item-sliding *ngFor=" let lista of listaPedidos | filtroArray:textoBuscar:'nombre'" >
-        <ion-item (click)="detalle(lista.detalles,lista.cliente.nombre,lista.n_cuota)">
-          <ion-grid>
-            <ion-row>
+        <ion-item class="ion-text-uppercase" (click)="detalle(lista.detalles,lista.cliente.nombre,lista.n_cuota,lista.id)">
+          <ion-grid >
+            <ion-row >
               <ion-col >
-                <ion-label>{{lista.cliente.nombre}}</ion-label>
+                <ion-label *ngIf="lista.moraCancelado == 'S'">{{lista.cliente.nombre}}</ion-label>
+                <ion-label *ngIf="lista.moraCancelado == 'N'" color="warning">{{lista.cliente.nombre}}</ion-label>
               </ion-col>
               <ion-col>
-                <ion-label class="label">{{lista.cliente.ciudad}}</ion-label>
+                <ion-label *ngIf="lista.moraCancelado == 'S'" class="label">{{lista.cliente.ciudad}}</ion-label>
+                <ion-label *ngIf="lista.moraCancelado == 'N'" class="label" color="warning" >{{lista.cliente.ciudad}}</ion-label>
               </ion-col>
             </ion-row>
           </ion-grid>       

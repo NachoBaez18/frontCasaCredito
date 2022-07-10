@@ -21,16 +21,18 @@ export class DetallePage implements OnInit {
       cuota:['',Validators.required],
       mora:['',Validators.required],
       n_cuota:['',Validators.required],
+      moraDias:['',Validators.required],
       fecha:['',Validators.required],
+     
     });
    }
 
   ngOnInit() {
-    console.log(this.detalle);
     this.form.controls['nombre'].setValue(this.nombre);
     this.form.controls['cuota'].setValue(this.detalle.monto);
     this.form.controls['mora'].setValue(this.detalle.mora);
     this.form.controls['n_cuota'].setValue(this.detalle.cuota_numero);
+    this.form.controls['moraDias'].setValue(this.detalle.moraDias);
     this.form.controls['fecha'].setValue(this.detalle.fecha_vencimiento);
     
   }

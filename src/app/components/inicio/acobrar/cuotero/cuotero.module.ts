@@ -10,6 +10,7 @@ import { CuoteroPage } from './cuotero.page';
 import { HeaderModalComponent } from '../../header-modal/header-modal.component';
 import { HeaderModalModule } from '../../header-modal/header-modal.module';
 
+
 @NgModule({
   imports: [
     CommonModule,

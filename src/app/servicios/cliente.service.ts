@@ -10,8 +10,6 @@ const API = environment.api;
 export class ClienteService {
 
   constructor(private http:HttpClient) { }
-
-
   public async get(id?, parametros?) {
     const url = (id) ? `${API}/cliente/${id}` : `${API}/cliente`;
 

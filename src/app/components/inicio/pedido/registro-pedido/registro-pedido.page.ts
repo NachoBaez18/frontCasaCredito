@@ -53,6 +53,7 @@ export class RegistroPedidoPage implements OnInit {
 
     if(!this.accion && !this.detalle){
       this.inputDisabled = false;
+      this.botonHabilitado = false;
       this.nombre = this.pedido.cliente.nombre
       this.fecha=this.pedido.fecha_entrega
       this.form.controls['monto'].setValue(this.pedido.monto);
@@ -106,12 +107,13 @@ export class RegistroPedidoPage implements OnInit {
  async editar(){
   this.fecha = moment(this.fecha).format('YYYY-MM-DD');
   this.pedidoR ={
-   id_cliente:2,
   fecha_entrega:this.fecha,
    monto:this.form.value.monto,
    n_cuota:this.form.value.cuota
   }
+
  const response: any = await this.pedidoService.actualizar(this.pedidoR,this.pedido.id);
+
  if (response.success) {
    setTimeout(() => {
    this.alertService.informativo('Pedido actualizado');

@@ -61,7 +61,7 @@ export class DetalleArqueoPage implements OnInit {
     }else{
    const response:any = await this.arqueoService.getUltimo();
    if(response.success){
-    if(response.data.id === this.arqueo.id){
+    if(response.data.id === this.arqueo.id && this.arqueo.cerrado ==='N'){
         this.boton = true;
     }else{
       this.boton = false;

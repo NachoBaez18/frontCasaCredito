@@ -51,8 +51,8 @@ export class ACobrarComponent implements OnInit {
     const response:any = await this.pedidoService.getaCobrarHoy();
     if(response.success){
      this.listaPedidos =  response.data;
-     console.log(this.listaPedidos);
       }
+
   }
 
   async reorder(event) {
@@ -64,7 +64,6 @@ export class ACobrarComponent implements OnInit {
     this.pedidosOrden={
       pedidos:this.listaPedidos
     }
-    console.log(this.pedidosOrden);
     const response:any = await this.pedidoService.orden(this.pedidosOrden); 
   }
   buscar(event){

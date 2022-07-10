@@ -40,6 +40,14 @@ const routes: Routes = [
     path: 'cuotero',
     loadChildren: () => import('./acobrar/cuotero/cuotero.module').then( m => m.CuoteroPageModule)
   },
+  {
+    path: 'mora-parcial',
+    loadChildren: () => import('./acobrar/mora-parcial/mora-parcial.module').then( m => m.MoraParcialPageModule)
+  },
+  {
+    path: 'fecha-edit',
+    loadChildren: () => import('./acobrar/fecha-edit/fecha-edit.module').then( m => m.FechaEditPageModule)
+  },
 ];
 
 @NgModule({

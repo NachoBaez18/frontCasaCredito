@@ -25,8 +25,8 @@ export class MenuComponent implements OnInit {
   this.menuCtrl.close();
   }
 
-  async irCobrosHoy(x:boolean){
-    this.router.navigate(['inicio/aCobrar'],{queryParams:{data:x}});
+  async irCobrosHoy(header:boolean){
+    this.router.navigate(['inicio/aCobrar'],{queryParams:{data:header}});
     this.menuCtrl.close();
   }
  async irCobros(x:boolean){

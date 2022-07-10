@@ -194,5 +194,35 @@ export class PedidoService {
       );
     });
   }
+  public async pagoParcialMora(data){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return new Promise(resolve => {
+      this.http.post(`${API}/pedido/pagadoParcialMora`,data, { headers: headers }).subscribe(
+        (response: any) => {
+          resolve(response);
+        },
+        error => {
+          resolve(error.error);
+        }
+      );
+    });
+  }
+
+  public async updateFecha(data){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return new Promise(resolve => {
+      this.http.post(`${API}/pedido/updateFechaVencimiento`,data, { headers: headers }).subscribe(
+        (response: any) => {
+          console.log(response);
+          resolve(response);
+        },
+        error => {
+          resolve(error.error);
+        }
+      );
+    });
+  }
 
 }

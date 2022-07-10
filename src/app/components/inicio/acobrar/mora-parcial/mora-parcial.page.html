@@ -1,19 +1,19 @@
-<app-header-modal titulo = "Detalle"></app-header-modal>
+<app-header-modal titulo = "Pago parcial mora"></app-header-modal>
 <ion-content padding>
   <h3  class="ancho">Detalle de Cobro</h3>
 
-    <form [formGroup]="form" >
+    <form [formGroup]="form" (ngSubmit)="pagoMora()">
         <ion-item class="ancho">
             <ion-label position="floating">Nombre</ion-label>
             <ion-input [readonly] ="inputDisabled" autocomplete="off" formControlName="nombre"></ion-input>   
           </ion-item>
 
-          <ion-item class="ancho">
+          <ion-item class="ancho" hidden="true">
             <ion-label position="floating">Fecha Vencimiento</ion-label>
             <ion-input [readonly] ="inputDisabled" autocomplete="off" formControlName="fecha"></ion-input>   
           </ion-item>
 
-          <ion-item class="ancho">
+          <ion-item class="ancho" hidden="true">
             <ion-label position="floating">Monto Cuota</ion-label>
             <ion-input [readonly] ="inputDisabled" autocomplete="off" formControlName="cuota"></ion-input>   
           </ion-item>
@@ -23,17 +23,23 @@
             <ion-input [readonly] ="inputDisabled" type="number" autocomplete="off" formControlName="mora"></ion-input>
           </ion-item>
 
-          <ion-item class="ancho">
+          <ion-item class="ancho" hidden="true">
             <ion-label position="floating">Dias atraso</ion-label>
             <ion-input [readonly] ="inputDisabled" type="number" autocomplete="off" formControlName="moraDias"></ion-input>
           </ion-item>
 
-          <ion-item class="ancho">
+          <ion-item class="ancho" hidden="true">
             <ion-label position="floating">Nº Cuota</ion-label>
             <ion-input [readonly] ="inputDisabled" autocomplete="off" formControlName="n_cuota"></ion-input>
           </ion-item>
 
-          
+          <ion-item class="ancho">
+            <ion-label position="floating">Monto mora a pagar</ion-label>
+            <ion-input  autocomplete="off" formControlName="moraMonto"></ion-input>
+          </ion-item>
+
+          <br>
+          <ion-button  type="submit" class="ancho"  expand="block" color="secondary" [disabled]="form.invalid">Registrar</ion-button>
       </form>
 
 </ion-content>

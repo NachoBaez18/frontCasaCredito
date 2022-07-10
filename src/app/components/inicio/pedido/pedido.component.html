@@ -11,7 +11,7 @@
        <ion-reorder-group [disabled]="false"
                           (ionItemReorder)="reorder($event)">
       <ion-item-sliding *ngFor=" let lista of listaPedidos | filtroArray:textoBuscar:'nombre'">
-        <ion-item (click)="detalle(true,lista,true)">
+        <ion-item class="ion-text-uppercase" (click)="detalle(true,lista,true)">
           <ion-grid>
             <ion-row>
               <ion-col >
