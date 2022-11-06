@@ -71,13 +71,14 @@ export class ACobrarComponent implements OnInit {
   }
  
 
- async  detalle(detalle:[],nombre:string,n_cuota:number){
+ async  detalle(detalle:[],nombre:string,n_cuota:number,idPedido:number){
     const modal = await this.modalCtrl.create({
       component:CuoteroPage,
       componentProps:{
         detalle:detalle,
         nombre:nombre,
-        n_cuota:n_cuota
+        n_cuota:n_cuota,
+        idPedido:idPedido
       }
     });
    await modal.present();

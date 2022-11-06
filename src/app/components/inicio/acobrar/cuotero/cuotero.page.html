@@ -2,7 +2,7 @@
 <ion-content padding>
   <h3 class="ancho">Detalle Cuotas de {{nombre}}</h3>
 
-  <ion-list>
+  <ion-list >
       
     <ion-item-sliding *ngFor=" let lista of detalle">
       <ion-item (click)="detalles(lista)">
@@ -47,11 +47,13 @@
           <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
         </ion-item-option>
       </ion-item-options>
-
     </ion-item-sliding>
+
     <br>
-    <ion-button  (click)="CambiarFecha()" class="ancho"  expand="block" color="secondary" >Cambiar Fecha Vencimiento</ion-button>
-    
+      <ion-button  (click)="CambiarFecha()" class="ancho"  expand="block" color="secondary" >Cambiar Fecha Vencimiento</ion-button>
+      <ion-button  (click)="getDetalles()" class="ancho"  expand="block" color="warning">Opciones Avanzadas</ion-button>
+
+ 
 
     </ion-list>
 

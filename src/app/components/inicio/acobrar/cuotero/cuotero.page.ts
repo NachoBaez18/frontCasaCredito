@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
+import { ActionSheetService } from 'src/app/servicios/action-sheet.service';
 import { AlertService } from 'src/app/servicios/alert/alert.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
 import { DetallePage } from '../detalle/detalle.page';
@@ -25,16 +26,19 @@ export class CuoteroPage implements OnInit {
               private alertService:AlertService,
               private route:Router,
               private modalCtrl:ModalController,
-              private routeAc:ActivatedRoute) { }
+              private routeAc:ActivatedRoute,
+              private actionSheet:ActionSheetService) { }
 
   ngOnInit() {
-
     this.routeAc.queryParams.subscribe((params: any) => {
       this.x = (params.data === "true");
-    });;
+    });
+    console.log(this.detalle);
+    
   }
 
   async CambiarFecha(){
+    console.log(this.idPedido);
     const modal = await this.modalCtrl.create({
       component:FechaEditPage,
       componentProps:{
@@ -45,9 +49,6 @@ export class CuoteroPage implements OnInit {
    await modal.present();
 
   }
-
-
-
   async pagadoParcial(detalle:any){   
    
       this.parametro = {
@@ -112,8 +113,9 @@ export class CuoteroPage implements OnInit {
   }
 
   async noPagado(detalle:any){
-    
-       let fechaNueva = moment(detalle.fechaVencimiento).add(1,'days')
+        let dia =  moment(detalle.fechaVencimiento).format('dddd'); 
+        let fechaNueva = dia == 'Saturday' ? moment(detalle.fechaVencimiento).add(2,'days') : moment(detalle.fechaVencimiento).add(1,'days');
+           
 
        if (detalle.mora >= 30000){
         this.parametro = {
@@ -150,11 +152,60 @@ export class CuoteroPage implements OnInit {
     }
 
    }
+   async getDetalles(){
+ 
+      let boton:any = [
+        {
+          text: 'Deuda total',
+          handler:() => this.getDeudatotal()
+        },
+        {
+          text: 'Cuotero total',
+          handler:() => this.getCuoteroTotal()
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+      ];
+
+        this.actionSheet.presentActionSheet(boton);
+
+   }
+
+   async getDeudatotal(){
+    const response:any = await this.pedidoService.getDeudaTotal(this.idPedido);
+    if(response.success){
+      
+      this.detalle = response.data;
+      this.x = false;
+      console.log(this.detalle);
+      
+    }else{
+     this.alertService.informativo(response.message);
+     this.modalCtrl.dismiss();
+   }
+
+   }
+
+   async getCuoteroTotal(){
+    const response:any = await this.pedidoService.getCuoteroTotal(this.idPedido);
+    if(response.success){
+      
+      this.detalle = response.data;
+      this.x = false;
+      console.log(this.detalle)
+    }else{
+     this.alertService.informativo(response.message);
+     this.modalCtrl.dismiss();
+   }
+   }
 
    async salteado(detalle:any){
 
-    let fechaNueva = moment(detalle.fechaVencimiento).add(1,'days')
-  
+    let dia =  moment(detalle.fechaVencimiento).format('dddd'); 
+    let fechaNueva = dia == 'Saturday' ? moment(detalle.fechaVencimiento).add(2,'days') : moment(detalle.fechaVencimiento).add(1,'days');
+      
     this.parametro = {
      id_pedido:detalle.id_pedido,
      fecha_vencimiento:fechaNueva.format('YYYY-MM-DD'), 
@@ -182,7 +233,8 @@ export class CuoteroPage implements OnInit {
       component:DetallePage,
       componentProps:{
         detalle:detalle,
-        nombre:this.nombre
+        nombre:this.nombre,
+        idPedido:this.idPedido
       }
     });
    await modal.present();

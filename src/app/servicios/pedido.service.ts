@@ -225,4 +225,51 @@ export class PedidoService {
     });
   }
 
+  public async getDeudaTotal(id:number){
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return new Promise(resolve => {
+      this.http.get(`${API}/pedido/getDetallesNoPagados/${id}`, { headers: headers }).subscribe(
+        (response: any) => {
+          resolve(response);
+        },
+        error => {
+          resolve(error.error);
+        }
+      );
+    });
+  }
+
+  public async getCuoteroTotal(id:number){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return new Promise(resolve => {
+      this.http.get(`${API}/pedido/getDetallesAll/${id}`, { headers: headers }).subscribe(
+        (response: any) => {
+          resolve(response);
+        },
+        error => {
+          resolve(error.error);
+        }
+      );
+    });
+
+  }
+  public async rollback(data:any){
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return new Promise(resolve => {
+      this.http.post(`${API}/pedido/detalle/rollback`,data, { headers: headers }).subscribe(
+        (response: any) => {
+          resolve(response);
+        },
+        error => {
+          resolve(error.error);
+        }
+      );
+    });
+  }
+
 }
