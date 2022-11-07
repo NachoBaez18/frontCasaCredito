@@ -11,17 +11,20 @@
             <ion-col >
               <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='S' && lista.moraCancelado ==='N'" color="warning">{{nombre}}</ion-label>
               <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='N'" color="danger">{{nombre}}</ion-label>
-              <ion-label *ngIf="lista.mora === 0" >{{nombre}}</ion-label>
+              <ion-label *ngIf="lista.mora === 0  && lista.cancelado ==='N'" >{{nombre}}</ion-label>
+              <ion-label *ngIf="lista.cancelado ==='S'  && lista.moraCancelado ==='S'" color="success">{{nombre}}</ion-label>
             </ion-col>
             <ion-col>
               <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='S' && lista.moraCancelado ==='N'" color="warning" class="labelCenter">{{lista.cuota_numero}}/{{n_cuota}}</ion-label>
               <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='N'" color="danger" class="labelCenter">{{lista.cuota_numero}}/{{n_cuota}}</ion-label>
-              <ion-label *ngIf="lista.mora === 0"  class="labelCenter">{{lista.cuota_numero}}/{{n_cuota}}</ion-label>
+              <ion-label *ngIf="lista.mora === 0 && lista.cancelado ==='N'"  class="labelCenter">{{lista.cuota_numero}}/{{n_cuota}}</ion-label>
+              <ion-label *ngIf="lista.cancelado ==='S'  && lista.moraCancelado ==='S'" color="success" class="labelCenter">{{lista.cuota_numero}}/{{n_cuota}}</ion-label>
             </ion-col>
             <ion-col>
               <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='S' && lista.moraCancelado ==='N'" color="warning" class="label">{{lista.mora | number}}</ion-label>
               <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='N'" color="danger" class="label">{{lista.monto + lista.mora | number}}</ion-label>
-              <ion-label *ngIf="lista.mora === 0"  class="label">{{lista.monto | number}}</ion-label>
+              <ion-label *ngIf="lista.mora === 0 && lista.cancelado ==='N'"  class="label">{{lista.monto | number}}</ion-label>
+              <ion-label *ngIf="lista.cancelado ==='S'  && lista.moraCancelado ==='S'" color="success" class="label">{{lista.monto | number}}</ion-label>
             </ion-col>
           </ion-row>
         </ion-grid>       

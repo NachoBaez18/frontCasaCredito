@@ -33,8 +33,7 @@ export class CuoteroPage implements OnInit {
     this.routeAc.queryParams.subscribe((params: any) => {
       this.x = (params.data === "true");
     });
-    console.log(this.detalle);
-    
+
   }
 
   async CambiarFecha(){
@@ -156,10 +155,12 @@ export class CuoteroPage implements OnInit {
  
       let boton:any = [
         {
+          role:'selected',
           text: 'Deuda total',
           handler:() => this.getDeudatotal()
         },
         {
+          role:'selected',
           text: 'Cuotero total',
           handler:() => this.getCuoteroTotal()
         },
@@ -178,9 +179,7 @@ export class CuoteroPage implements OnInit {
     if(response.success){
       
       this.detalle = response.data;
-      this.x = false;
-      console.log(this.detalle);
-      
+      this.x = false;   
     }else{
      this.alertService.informativo(response.message);
      this.modalCtrl.dismiss();

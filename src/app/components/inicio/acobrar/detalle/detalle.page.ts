@@ -54,15 +54,18 @@ export class DetallePage implements OnInit {
    let boton:any = [
 
     {
+      role:'selected',
       text: 'Pago Total',
       handler:async() => await this.volver('total')
     },
     {
+      role:'selected',
       text: 'Pago parcial',
       handler:() => this.volver('parcial')
     },
 
     {
+      role:'selected',
       text: 'No pagado',
       handler:() => this.volver('noPago')
     },
@@ -71,6 +74,7 @@ export class DetallePage implements OnInit {
       handler:() => this.volver('moraTotal')
     },
     {
+      role:'selected',
       text: 'Mora parcial pagada',
       handler:() => this.AlertMora()
     },
