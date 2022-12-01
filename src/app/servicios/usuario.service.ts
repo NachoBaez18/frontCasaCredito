@@ -30,7 +30,8 @@ export class UsuarioService {
         async (response: any) => {
           if (response.success) {
             // se guarda el token en el Storage
-            await this.guardarToken(response.data);
+            let data = response.data;
+            await this.guardarToken(data.token,data.id);
             // se manda el usuario mediante el emmiter
             this.loginEmitter.emit(this.usuario);
             // se retorna true
@@ -46,9 +47,10 @@ export class UsuarioService {
    });
   }
   
-  async guardarToken(token: string) {
+  async guardarToken(token: string, id:string) {
     this.token = token;
     await localStorage.setItem('user-admin-token', token);
+    await localStorage.setItem('id',id);
     await this.validarToken();
   }
 

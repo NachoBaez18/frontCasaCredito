@@ -17,6 +17,8 @@ export class DetallePage implements OnInit {
   @Input() detalle:any;
   @Input() nombre:string;
 
+  id:string = localStorage.getItem('id');
+
   form:FormGroup;
   inputDisabled:boolean = true;
 
@@ -56,31 +58,38 @@ export class DetallePage implements OnInit {
     {
       role:'selected',
       text: 'Pago Total',
-      handler:async() => await this.volver('total')
+      handler:async() => await this.volver('total'),
+      icon:'reader-outline'
     },
     {
       role:'selected',
       text: 'Pago parcial',
-      handler:() => this.volver('parcial')
+      handler:() => this.volver('parcial'),
+      icon:'receipt-outline'
     },
 
     {
       role:'selected',
       text: 'No pagado',
-      handler:() => this.volver('noPago')
+      handler:() => this.volver('noPago'),
+      icon:'eye-off-outline'
     },
     {
+      role:'selected',
       text: 'Mora pagada',
-      handler:() => this.volver('moraTotal')
+      handler:() => this.volver('moraTotal'),
+      icon:'file-tray-full-outline'
     },
     {
       role:'selected',
       text: 'Mora parcial pagada',
-      handler:() => this.AlertMora()
+      handler:() => this.AlertMora(),
+      icon:'file-tray-stacked-outline'
     },
     {
-      text: 'Cancel',
-      role: 'cancel'
+      text: 'Cancelar',
+      role: 'cancel',
+      icon: 'close-outline'
     },
 
     ];

@@ -9,6 +9,9 @@ import { MenuController } from '@ionic/angular';
 })
 export class MenuComponent implements OnInit {
 
+
+  id:string = localStorage.getItem('id');
+
   
   constructor(private router:Router,
               private menuCtrl:MenuController) { }

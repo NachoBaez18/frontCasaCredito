@@ -34,7 +34,7 @@
           </ion-item>
       </form>
 
-      <ion-button  (click)="reversar()" class="ancho"  expand="block" color="danger">Reversar</ion-button>
+      <ion-button *ngIf="id === '2'" (click)="reversar()" class="ancho"  expand="block" color="danger">Reversar</ion-button>
 
 
 </ion-content>

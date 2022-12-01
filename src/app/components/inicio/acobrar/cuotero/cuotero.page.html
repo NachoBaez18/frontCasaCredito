@@ -37,7 +37,7 @@
           <ion-icon slot="icon-only" name="checkmark-done-outline"></ion-icon>
         </ion-item-option>
       </ion-item-options>
-      <ion-item-options *ngIf="x" side="end" >
+      <ion-item-options side="end" >
         <ion-item-option color="danger" (click)="noPagado(lista)">
           <ion-icon slot="icon-only" name="close-outline"></ion-icon>
         </ion-item-option>
@@ -53,8 +53,8 @@
     </ion-item-sliding>
 
     <br>
-      <ion-button  (click)="CambiarFecha()" class="ancho"  expand="block" color="secondary" >Cambiar Fecha Vencimiento</ion-button>
-      <ion-button  (click)="getDetalles()" class="ancho"  expand="block" color="warning">Opciones Avanzadas</ion-button>
+      <ion-button *ngIf="id === '2'" (click)="CambiarFecha()" class="ancho"  expand="block" color="secondary" >Cambiar Fecha Vencimiento</ion-button>
+      <ion-button (click)="getDetalles()" class="ancho"  expand="block" color="warning">Opciones Avanzadas</ion-button>
 
  
 

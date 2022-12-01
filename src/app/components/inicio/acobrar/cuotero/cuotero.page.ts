@@ -21,6 +21,7 @@ export class CuoteroPage implements OnInit {
   @Input() idPedido:number;
   parametro = {};
   x:boolean;
+  id:string = localStorage.getItem('id');
 
   constructor(private pedidoService:PedidoService,
               private alertService:AlertService,
@@ -157,16 +158,19 @@ export class CuoteroPage implements OnInit {
         {
           role:'selected',
           text: 'Deuda total',
-          handler:() => this.getDeudatotal()
+          handler:() => this.getDeudatotal(),
+          icon:'reader-outline'
         },
         {
           role:'selected',
           text: 'Cuotero total',
-          handler:() => this.getCuoteroTotal()
+          handler:() => this.getCuoteroTotal(),
+          icon:'receipt-outline'
         },
         {
-          text: 'Cancel',
-          role: 'cancel'
+          text: 'Cancelar',
+          role: 'cancel',
+          icon: 'close-outline'
         },
       ];
 
