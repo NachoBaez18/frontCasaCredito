@@ -1,4 +1,3 @@
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
@@ -18,23 +17,23 @@ import { DetallePage } from './detalle/detalle.page';
 export class ACobrarComponent implements OnInit {
 
   textoBuscar = '';
-  listaPedidos:Pedido[] =[];
-  listaDetalle:Pedido[]=[];
-  idDetalle:number;
+  listaPedidos: Pedido[] =[];
+  listaDetalle: Pedido[]=[];
+  idDetalle: number;
   parametro ={};
   pedidosOrden = {};
   fechaHoy = moment();
-  public header:boolean;
+  public header: boolean;
 
-  constructor(private pedidoService:PedidoService,
-              private modalCtrl:ModalController,
-              private alertService:AlertService,
-              private route:Router,)
+  constructor(private pedidoService: PedidoService,
+              private modalCtrl: ModalController,
+              private alertService: AlertService,
+              private route: Router,)
                { }
 
   ngOnInit() {
     this.getPedidos();
-  } 
+  }
   doRefresh(event){
     setTimeout(() => {
       this.getPedidos();
@@ -43,12 +42,12 @@ export class ACobrarComponent implements OnInit {
    }
 
    async getPedidos(){
-    
+
     this.parametro={
       cancelado:'N',
       entregado:'S'
-      }
-    const response:any = await this.pedidoService.getaCobrarHoy();
+      };
+    const response: any = await this.pedidoService.getaCobrarHoy();
     if(response.success){
      this.listaPedidos =  response.data;
       }
@@ -63,22 +62,22 @@ export class ACobrarComponent implements OnInit {
 
     this.pedidosOrden={
       pedidos:this.listaPedidos
-    }
-    const response:any = await this.pedidoService.orden(this.pedidosOrden); 
+    };
+    const response: any = await this.pedidoService.orden(this.pedidosOrden);
   }
   buscar(event){
     this.textoBuscar = event.detail.value;
   }
- 
 
- async  detalle(detalle:[],nombre:string,n_cuota:number,idPedido:number){
+
+ async  detalle(detalle: [],nombre: string,n_cuota: number,idPedido: number){
     const modal = await this.modalCtrl.create({
       component:CuoteroPage,
       componentProps:{
-        detalle:detalle,
-        nombre:nombre,
-        n_cuota:n_cuota,
-        idPedido:idPedido
+        detalle,
+        nombre,
+        n_cuota,
+        idPedido
       }
     });
    await modal.present();

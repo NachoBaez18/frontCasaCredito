@@ -1,4 +1,3 @@
-import { variable } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AlertController, ModalController } from '@ionic/angular';
@@ -14,19 +13,19 @@ import { MoraParcialPage } from '../mora-parcial/mora-parcial.page';
 })
 export class DetallePage implements OnInit {
 
-  @Input() detalle:any;
-  @Input() nombre:string;
+  @Input() detalle: any;
+  @Input() nombre: string;
 
-  id:string = localStorage.getItem('id');
+  id: string = localStorage.getItem('id');
 
-  form:UntypedFormGroup;
-  inputDisabled:boolean = true;
+  form: UntypedFormGroup;
+  inputDisabled = true;
 
-  constructor(private fb:UntypedFormBuilder,
-              private actioSheet:ActionSheetService,
-              private pedidoService:PedidoService,
-              private alertService:AlertService,
-              private modalCtrl:ModalController,
+  constructor(private fb: UntypedFormBuilder,
+              private actioSheet: ActionSheetService,
+              private pedidoService: PedidoService,
+              private alertService: AlertService,
+              private modalCtrl: ModalController,
               private alertController: AlertController) {
 
     this.form = this.fb.group({
@@ -36,29 +35,26 @@ export class DetallePage implements OnInit {
       n_cuota:['',Validators.required],
       moraDias:['',Validators.required],
       fecha:['',Validators.required],
-     
     });
    }
 
-  ngOnInit() { 
-    
-    this.form.controls['nombre'].setValue(this.nombre);
-    this.form.controls['cuota'].setValue(this.detalle.monto);
-    this.form.controls['mora'].setValue(this.detalle.mora);
-    this.form.controls['n_cuota'].setValue(this.detalle.cuota_numero);
-    this.form.controls['moraDias'].setValue(this.detalle.moraDias);
-    this.form.controls['fecha'].setValue(this.detalle.fecha_vencimiento);
-    
+  ngOnInit() {
+    this.form.controls.nombre.setValue(this.nombre);
+    this.form.controls.cuota.setValue(this.detalle.monto);
+    this.form.controls.mora.setValue(this.detalle.mora);
+    this.form.controls.n_cuota.setValue(this.detalle.cuota_numero);
+    this.form.controls.moraDias.setValue(this.detalle.moraDias);
+    this.form.controls.fecha.setValue(this.detalle.fecha_vencimiento);
   }
 
   async reversar(){
 
-   let boton:any = [
+   const boton: any = [
 
     {
       role:'selected',
       text: 'Pago Total',
-      handler:async() => await this.volver('total'),
+      handler:async () => await this.volver('total'),
       icon:'reader-outline'
     },
     {
@@ -114,7 +110,7 @@ export class DetallePage implements OnInit {
           name:'mora',
           placeholder: 'Monto',
 
-        },  
+        },
       ],
     });
 
@@ -122,18 +118,18 @@ export class DetallePage implements OnInit {
   }
 
 
-  async volver(accion:string,mora?:number){
+  async volver(accion: string,mora?: number){
 
-  let parameter = {
+  const parameter = {
     id:this.detalle.id,
-    accion:accion,
-    mora:mora
-  }
-    const response:any = await this.pedidoService.rollback(parameter);
+    accion,
+    mora
+  };
+    const response: any = await this.pedidoService.rollback(parameter);
      console.log(response);
-     
+
     if(response.success){
-      
+
       this.alertService.informativo(response.message);
       this.modalCtrl.dismiss();
     }else{
