@@ -16,31 +16,26 @@ import { PedidoService } from './servicios/pedido.service';
 
 
 @NgModule({
-  declarations: [ 
-    AppComponent,
-    LoginComponent,
-
-  ],
-  entryComponents: [
-  ],
-
-  imports: [
-    BrowserModule, 
-    IonicModule.forRoot(),
-     AppRoutingModule,
-     ReactiveFormsModule,
-     HttpClientModule,
-     PipesModule,
-
+    declarations: [
+        AppComponent,
+        LoginComponent,
     ],
-  providers: [
-    UsuarioService,
-    ClienteService,
-    PedidoService,
-    { provide:
-     RouteReuseStrategy, 
-    useClass: IonicRouteStrategy 
-  }],
-  bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        PipesModule,
+    ],
+    providers: [
+        UsuarioService,
+        ClienteService,
+        PedidoService,
+        { provide: RouteReuseStrategy,
+            useClass: IonicRouteStrategy
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

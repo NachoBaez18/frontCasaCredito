@@ -20,30 +20,24 @@ import { AcobaraAdelantadoComponent } from './acobara-adelantado/acobara-adelant
 
 
 @NgModule({
-  entryComponents:[
-    RegistroPage
-  ],
-  exports:[
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    InicioPageRoutingModule,
-    PipesModule,
-    RegistroPageModule,
-  ],
-  declarations: [
-    InicioPage,
-    ClienteComponent,
-    PedidoComponent,
-    MenuComponent,
-    HeaderComponent,
-    ACobrarComponent,
-    AcobaraAdelantadoComponent,
-    ArqueoComponent,
-  
-
-  ]
+    exports: [],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        InicioPageRoutingModule,
+        PipesModule,
+        RegistroPageModule,
+    ],
+    declarations: [
+        InicioPage,
+        ClienteComponent,
+        PedidoComponent,
+        MenuComponent,
+        HeaderComponent,
+        ACobrarComponent,
+        AcobaraAdelantadoComponent,
+        ArqueoComponent,
+    ]
 })
 export class InicioPageModule {}
