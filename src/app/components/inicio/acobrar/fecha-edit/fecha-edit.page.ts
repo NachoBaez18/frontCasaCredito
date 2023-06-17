@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { AlertService } from 'src/app/servicios/alert/alert.service';
@@ -12,7 +12,7 @@ import { PedidoService } from 'src/app/servicios/pedido.service';
 })
 export class FechaEditPage implements OnInit {
 
-  form:FormGroup;
+  form:UntypedFormGroup;
   inputDisabled:boolean = true;
   @Input() idPedido:any;
   @Input() nombre:string;

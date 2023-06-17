@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { AlertService } from 'src/app/servicios/alert/alert.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
@@ -11,13 +11,13 @@ import { PedidoService } from 'src/app/servicios/pedido.service';
 })
 export class MoraParcialPage implements OnInit {
 
-  form:FormGroup;
+  form:UntypedFormGroup;
   inputDisabled:boolean = true;
   @Input() detalle:any;
   @Input() nombre:string;
   parametro = {};
 
-  constructor(private fb:FormBuilder,
+  constructor(private fb:UntypedFormBuilder,
               private pedidoService:PedidoService,
               private alertService:AlertService,
               private modalCtrl:ModalController) { 

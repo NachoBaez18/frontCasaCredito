@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService} from '../../servicios/alert/alert.service';
 import {LoadingService} from '../../servicios/loading/loading.service';
@@ -11,11 +11,11 @@ import { UsuarioService } from '../../servicios/usuario.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  form:FormGroup
+  form:UntypedFormGroup
 
   constructor(private alertService:AlertService,
               private loadService:LoadingService,
-              private fb:FormBuilder,
+              private fb:UntypedFormBuilder,
               private router:Router,
               private usuarioService:UsuarioService) {
 

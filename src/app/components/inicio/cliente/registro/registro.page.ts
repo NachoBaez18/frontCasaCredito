@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Cliente } from 'src/app/moldels/cliente';
 import { AlertService } from 'src/app/servicios/alert/alert.service';
@@ -15,11 +15,11 @@ export class RegistroPage implements OnInit {
   @Input() accion:boolean;
   @Input() cliente:Cliente;
   @Input() detalle:boolean;
-  form:FormGroup;
+  form:UntypedFormGroup;
   inputDisabled:boolean;
 
 
-  constructor( private fb:FormBuilder,
+  constructor( private fb:UntypedFormBuilder,
                 private clienteService:ClienteService,
                 private alertService:AlertService,
                 private modalCtrl:ModalController) { 

@@ -1,7 +1,7 @@
 
 import { CurrencyPipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
@@ -23,7 +23,7 @@ export class RegistroPedidoPage implements OnInit {
   @Input() detalle:boolean;
   @Input() cliente:Cliente;
   @Input() vCliente:boolean;
-  form:FormGroup;
+  form:UntypedFormGroup;
   pedidoR:{}={};
   inputDisabled:boolean;
   botonHabilitado:boolean=true;
@@ -36,7 +36,7 @@ export class RegistroPedidoPage implements OnInit {
   
 
 
-  constructor( private fb:FormBuilder,
+  constructor( private fb:UntypedFormBuilder,
                private pedidoService:PedidoService,
                 private alertService:AlertService,
                 private modalCtrl:ModalController,

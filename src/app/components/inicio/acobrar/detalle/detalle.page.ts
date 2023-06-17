@@ -1,6 +1,6 @@
 import { variable } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ActionSheetService } from 'src/app/servicios/action-sheet.service';
 import { AlertService } from 'src/app/servicios/alert/alert.service';
@@ -19,10 +19,10 @@ export class DetallePage implements OnInit {
 
   id:string = localStorage.getItem('id');
 
-  form:FormGroup;
+  form:UntypedFormGroup;
   inputDisabled:boolean = true;
 
-  constructor(private fb:FormBuilder,
+  constructor(private fb:UntypedFormBuilder,
               private actioSheet:ActionSheetService,
               private pedidoService:PedidoService,
               private alertService:AlertService,

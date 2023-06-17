@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Arqueo } from 'src/app/moldels/arqueo';
 import { AlertService } from 'src/app/servicios/alert/alert.service';
@@ -16,14 +16,14 @@ export class DetalleArqueoPage implements OnInit {
   @Input() accion:boolean;
   @Input() detalle:boolean;
 
-  form:FormGroup;
+  form:UntypedFormGroup;
   inputDisabled:boolean;
   boton:boolean;
 
   parametros={};
 
 
-  constructor( private fb:FormBuilder,
+  constructor( private fb:UntypedFormBuilder,
                 private arqueoService:ArqueoService,
                 private alertService:AlertService,
                 private modalCtrl:ModalController) { 
