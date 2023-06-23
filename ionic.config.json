@@ -3,5 +3,10 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+       "proxyUrl": "http://181.94.214.203:8001"
+    }
+ ]
 }

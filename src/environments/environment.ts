@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-
-  api:'http://127.0.0.1:8000/api'
+//desarrollo
+  //api:'http://127.0.0.1:8000/api'
+  //produccion
+  api:'http://181.94.214.203:8001/api'
 };
 
 /*
